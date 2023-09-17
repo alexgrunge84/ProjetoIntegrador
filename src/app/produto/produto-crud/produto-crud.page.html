@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ionic Angular Reactive Form Example</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="full">
+
+      <ion-label position="floating">Emissor</ion-label>
+
+      <ion-searchbar formControlEmissorName="emissor" [debounce]="1000"
+        (ionInput)="setFilteredEmissor()"
+      
+        (ionFocus)="emissorFocus($event)">
+      </ion-searchbar>
+      <ion-list *ngIf="this.contatos$ | async">
+
+        <ion-select        
+        (ionChange)="emissorChange($event)"
+        > 
+        <ion-select-option *ngFor="let emissor of filterEmissor" value="{{emissor.id}}">{{emissor.Nome1}}</ion-select-option>
+          
+        </ion-select>
+
+      </ion-list>
+
+
+    </ion-item>
+       
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

@@ -1,0 +1,19 @@
+{
+    "produtos": [
+      {
+      "Codigo": 1,
+      "Descricao": "banana",
+      "Valor": 1234
+    },
+    {
+    "Codigo": 2,
+    "Descricao": "banana maçã",
+    "Valor": 2222
+  },
+    {
+    "Codigo": 2,
+    "Descricao": "maça",
+    "Valor": 1111
+  }
+  ]
+}

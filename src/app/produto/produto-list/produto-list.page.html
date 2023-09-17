@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>notas-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">notas-list</ion-title>
+    </ion-toolbar>
+  </ion-header>
+    <!--Location-->
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredDescricao()"></ion-searchbar>
+    <ion-list no-lines>
+        <ion-item>
+          <!--ion-select label="Selecione um valor" placeholder="Selecione"-->
+          <ion-select
+          placeholder="Selecione"
+          (ionChange)="handleChange($event)"
+          > 
+          <ion-select-option *ngFor="let p of filterDescricao" value="{{ p.Descricao }}">{{ p.Descricao }}</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+    </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>Codigo</ion-col>
+      <ion-col>Descrição</ion-col>
+      <ion-col>Valor</ion-col>
+    </ion-row>
+  
+    <div *ngIf="(produtos$ | async)  let produtos">
+      <ion-row  *ngFor="let n of produtos; let i = index">
+        <ion-col>{{n.Codigo}}</ion-col>
+      <ion-col>{{n.Descricao }}</ion-col>
+      <ion-col>{{n.Valor}}</ion-col>
+    </ion-row>
+  </div>
+  </ion-grid>
+
+</ion-content>
